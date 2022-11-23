@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Forgot Password{% endblock title %}
+
+{% block body %}
+
+<div class="login_form_container">
+    <div class="box" style="height: 500px!important; width: 420px;">
+        <form method="post" action="/forgot" class="form">
+            {% csrf_token %}
+            <h2>Forgot Password</h2>
+            <div class="inputBox">
+                <input type="text" id="username" name="username" required>
+                <span>Enter Username</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="email" id="email" name="email" required>
+                <span>Email</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" id="newpassword" name="newpassword" required>
+                <span>Set New Password</span>
+                <i></i>
+            </div>
+            <div class="links">
+                <a href="/login">Login</a>
+            </div>
+            <input type="submit" style="width: 160px;" value="Get Password">
+        </form>
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,43 @@
+.logout_btn{
+    text-decoration: none;
+    color: white;
+    background: blue;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 5%;
+    transition: 0.5s;
+}
+.logout_btn:hover{
+    color: black;
+}
+::-webkit-scrollbar{
+    width: 0.5rem!important;
+}
+
+::-webkit-scrollbar-thumb{
+    width: 0.5rem;
+    background-color: black;
+}
+
+@media screen and (max-width: 460px) {
+    .keep_notes_form{
+        width: 300px;
+    }
+    .card_open.active{
+        left: 10%;
+    }
+    .keep_notes_navbar{
+        flex-wrap: nowrap;
+        padding: 1rem 0rem 1rem 1rem;
+    }
+    .logout_btn {
+        position: relative;
+        margin-top: 1rem;
+        right: 5%;
+        padding: 1rem 1.2rem;
+        font-size: 1rem;
+    }
+}
+

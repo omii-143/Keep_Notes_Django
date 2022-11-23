@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup{% endblock title %}
+
+{% block body %}
+
+<div class="login_form_container">
+    <div class="box" style="height: 680px; width: 420px;">
+        <form method="post" action="/register" class="form" style="padding: 44px 40px;">
+            {% csrf_token %}
+            <h2>Register</h2>
+            <div class="inputBox">
+                <input type="text" id="firstname" name="firstname" required>
+                <span>First Name</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="text" id="phone" name="lastname" required>
+                <span>Last Name</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="email" id="email" name="email" required>
+                <span>Email</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="text" id="username" name="username" required>
+                <span>Username</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" id="password" name="password" required>
+                <span>Password</span>
+                <i></i>
+            </div>
+            <div class="links">
+                <a href="/login">Login</a>
+            </div>
+            <input type="submit" style="width: 110px;" value="Register">
+        </form>
+    </div>
+</div>
+
+{% endblock body %}

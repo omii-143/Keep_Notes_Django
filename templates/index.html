@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Index{% endblock title %}
+
+
+
+{% block body %}
+
+<div id="keep_notes_container" class="keep_notes_container">
+    <nav class="keep_notes_navbar">
+        <div class="keep_icon">
+            <img src="/static/keeps.png" alt="...">
+        </div>
+        <h3 class="mx-3">Keep Your Notes. </h3>
+        <a class="logout_btn" href="/logout" role="button">Logout</a>
+    </nav>
+    <h2 class="my-4 mx-4" style="font-weight: 300;">Welcome, <span class="highlight_text">{{name}}</span>.</h2>
+    <form class="keep_notes_form" id="notes_form" method="post" action="/">
+        {% csrf_token %}
+        <div class="keep_input_control">
+            <input type="text" name="title" id="title" placeholder="Title">
+        </div>
+        <div class="keep_input_control">
+            <textarea name="desc" id="desc" cols="10" rows="4" placeholder="Add Note"></textarea>
+        </div>
+        <button type="submit" id="add_btn" class="btn add_btn btn-info">Add</button>
+    </form>
+
+
+    
+    <div class="container my-5 pb-5">
+        {% for note in notes %}
+
+        <div class="card mx-4 mt-5 card_open " style="border-radius: 8px; display: inline-block;">
+            <i class="fa-solid fa-xmark close_icon "></i>
+            <div class="card-body card_box ">
+                <h5 style="color: #ffffff;" class="card-title">{{note.title}}</h5>
+                <p class="card-text">{{note.desc}}</p>
+                <div class="edit_icons">
+                    <a href="/{{note.id}}"><i class="fa-solid fa-trash"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+
+</div>
+
+<script>
+    const form1 = document.getElementById("notes_form")
+    const desc = document.getElementById("desc")
+    const title = document.getElementById("title")
+    const add_btn = document.getElementById("add_btn")
+    const keep_notes_container = document.getElementById("keep_notes_container")
+
+    title.onfocus = () => {
+        desc.classList.add("active")
+        form1.classList.add("active")
+        add_btn.classList.add("active")
+    }
+    add_btn.onclick = () => {
+        desc.classList?.remove("active")
+        form1.classList?.remove("active")
+        add_btn.classList?.remove("active")
+    }
+
+
+    const close_btn = document.querySelectorAll(".close_icon")
+    const card_open = document.querySelectorAll(".card_open")
+    const card_box = document.querySelectorAll(".card_box")
+
+    card_box.forEach((ele, val) => {
+        $(ele).on("click", () => {
+            card_open[val].classList.add("active")
+            card_box[val].classList.add("active")
+            close_btn[val].classList.add("active")
+        })
+    })
+
+    close_btn.forEach((ele, val) => {
+        $(ele).on("click", () => {
+            card_open[val].classList?.remove("active")
+            card_box[val].classList?.remove("active")
+            close_btn[val].classList?.remove("active")
+        })
+    })
+
+
+
+
+
+
+</script>
+
+
+{% endblock body %}

@@ -1,0 +1,178 @@
+.keep_notes_container {
+    background: #23242a;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 5rem;
+}
+
+.keep_notes_container h1,
+.keep_notes_container h2,
+.keep_notes_container h3,
+.keep_notes_container h4,
+.keep_notes_container h5,
+.keep_notes_container h6,
+.keep_notes_container p {
+    color: whitesmoke;
+}
+
+
+.keep_notes_navbar {
+    width: 100%;
+    padding: 1rem 0rem 1rem 3rem;
+    display: flex;
+    align-items: center;
+    background: #28282B;
+    position: relative;
+}
+
+.keep_icon {
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+}
+
+.keep_icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.highlight_text {
+    color: #45f3ff;
+    font-weight: 500;
+}
+
+.keep_notes_form {
+    width: 400px;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.keep_notes_form .keep_input_control {
+    width: 100%;
+}
+
+.keep_notes_form .keep_input_control input,
+.keep_notes_form .keep_input_control textarea {
+    outline: none;
+    border: none;
+    color: #45f3ff;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    width: 100%;
+    padding: 20px 20px 10px;
+    background: #28282B;
+    border-radius: 8px;
+    border: 1px solid #45f3ff;
+    overflow: hidden;
+    resize: none;
+}
+
+.keep_notes_form .keep_input_control textarea {
+    display: none;
+    height: 0px;
+    border: 0.5px solid #45f3ff;
+}
+
+.keep_notes_form .keep_input_control input:valid,
+.keep_notes_form .keep_input_control textarea:valid .keep_notes_form .keep_input_control input:focus,
+.keep_notes_form .keep_input_control textarea:focus {
+    color: #45f3ff;
+}
+
+.add_btn {
+    display: none !important;
+}
+
+
+/* Hover */
+
+.keep_notes_form.active {
+    height: 260px;
+}
+
+.keep_notes_form .keep_input_control textarea.active {
+    display: block;
+    height: 100%;
+    border: 0.5px solid #45f3ff;
+}
+
+.keep_notes_form .add_btn.active {
+    display: inline-block !important;
+}
+
+.card_box {
+    background: #28282B;
+    box-shadow: 0px 0px 8px#45f3ff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.card_open {
+    transition: 0.5s;
+    width: 18rem !important;
+}
+
+.card_open.active {
+    position: fixed !important;
+    min-width: 50vw !important;
+    min-height: 50vh !important;
+    top: 25%;
+    left: 25%;
+    background: #3c3c3c4a!important;
+    backdrop-filter: blur(10px);
+    display: grid !important;
+    z-index: 99999999!important;
+    place-items: center !important;
+}
+
+.card_box.active {
+    width: 50%;
+    min-height: 5rem;
+    padding: 1rem 2rem;
+}
+
+.close_icon {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    color: white;
+    font-size: 3rem;
+    font-weight: 600!important;
+    cursor: pointer;
+    display: none!important;
+}
+
+.close_icon.active{
+    display: block!important;
+}
+
+.edit_icons{
+    width: 100%;
+    display: flex;
+    padding: 0.5rem 0;
+    grid-gap: 1rem;
+}
+
+.edit_icons i{
+    font-size: 1.3rem;
+    z-index: 50;
+}
+
+.edit_icons a:nth-child(1){
+    color: #d35454;;
+}
+
+.edit_icons a:nth-child(2){
+    color: #e0e093;
+}
+
