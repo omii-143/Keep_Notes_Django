@@ -5,7 +5,7 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from .models import AddNote
-
+from django.db import transaction
 
 # Create your views here.
 
@@ -75,11 +75,12 @@ def forgotPage(request):
         username = request.POST.get("username")
         newpassword = request.POST.get("newpassword")
         if User.objects.filter(username=username, email=email).exists():
-            user = User.objects.get(username=username)
-            user.set_password(newpassword)
-            user.save()
-            messages.success(request, "Your Password Saved Successfully !")
-            return redirect("/login")
+            with transaction.atomic():
+                user = User.objects.get(username=username)
+                user.set_password(newpassword)
+                user.save()
+                messages.success(request, "Your Password Saved Successfully !")
+                return redirect("/login")
         else:
             messages.warning(request, "Invalid Credentials. Please try Again !")
             return render(request, "forgot.html")
@@ -91,6 +92,23 @@ def logoutPage(request):
     return redirect("login")
 
 
+def update_Password(request):
+    if request.method == "POST":
+        username = request.user
+        prevpassword = request.POST.get("firstPass")
+        newpassword = request.POST.get("newpassword")
+        user = User.objects.get(username=username)
+        if user.check_password(prevpassword) == True:
+            with transaction.atomic():
+                user.set_password(newpassword)
+                user.save()
+                messages.success(request, "Your Password Changed Successfully !")
+                return redirect('index')
+        else:
+            messages.warning(request, "Invalid Credentials. Please try Again !")
+            return render(request, "updatePassword.html")
+
+    return render(request, "updatePassword.html")
 
 
 def delnote(request, id):
